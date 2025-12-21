@@ -1,0 +1,20 @@
+# ===== IDE files =====
+.vs/
+.vscode/
+
+# ===== Build output =====
+build/
+Debug/
+Release/
+output/
+
+# ===== Binary files =====
+*.exe
+*.dll
+*.obj
+*.pdb
+*.ilk
+
+# ===== Logs / temp =====
+*.log
+*.tmp
