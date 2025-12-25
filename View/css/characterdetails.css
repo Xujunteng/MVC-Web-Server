@@ -92,11 +92,6 @@ body {
     height: auto;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-}
-
-.character-image:hover {
-    transform: scale(1.05);
 }
 
 .back-section {
