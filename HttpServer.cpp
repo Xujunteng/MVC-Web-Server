@@ -3,45 +3,15 @@
 #include<ws2tcpip.h>
 #include<windows.h>
 #include<sstream>
-#include<cctype>
 #include"Controller.h"
 #include"HttpServer.h"
 #include"HttpRequest.h"
+#include"HttpRequestParser.h"
 #include"Logger.h"
 #include"ModelAndView.h"
 #include"HttpResponse.h"
 #include"View.h"
-
-static int hexVal(char c) {
-	if (c >= '0' && c <= '9') return c - '0';
-	if (c >= 'a' && c <= 'f') return 10 + (c - 'a');
-	if (c >= 'A' && c <= 'F') return 10 + (c - 'A');
-	return -1;
-}
-
-static std::string urlDecode(const std::string& s) {
-	std::string out;
-	out.reserve(s.size());
-	for (size_t i = 0; i < s.size(); ++i) {
-		char c = s[i];
-		if (c == '+') {
-			out.push_back(' ');
-		} else if (c == '%' && i + 2 < s.size()) {
-			int hi = hexVal(s[i + 1]);
-			int lo = hexVal(s[i + 2]);
-			if (hi >= 0 && lo >= 0) {
-				char ch = static_cast<char>((hi << 4) | lo);
-				out.push_back(ch);
-				i += 2;
-			} else {
-				out.push_back(c);
-			}
-		} else {
-			out.push_back(c);
-		}
-	}
-	return out;
-}
+#include"ImageHandler.h"
 
 void HttpServer::start(){
 	SetConsoleOutputCP(65001);
@@ -85,42 +55,45 @@ void HttpServer::start(){
 		}
 		Logger::info("Client connected!");
 		char buffer[4096] = { 0 };
-		int bytesReceived = recv(clientSocket, buffer, sizeof(buffer), 0);
+		int bytesReceived = recv(clientSocket, buffer, sizeof(buffer) - 1, 0);
+		if (bytesReceived < 0) {
+			Logger::error("recv failed");
+			closesocket(clientSocket);
+			continue;
+		}
+		if (bytesReceived == 0) {
+			Logger::info("Client disconnected");
+			closesocket(clientSocket);
+			continue;
+		}
+		buffer[bytesReceived] = '\0'; 
+		
 		HttpRequest req;
 		std::string requestStr(buffer, bytesReceived);
-		Logger::info(std::string("收到请求内容:\n") + requestStr);
-		size_t pos1 = requestStr.find(' ');
-		size_t pos2 = requestStr.find(' ', pos1 + 1);
-		if (pos1 != std::string::npos && pos2 != std::string::npos) {
-			req.method = requestStr.substr(0, pos1);
-			std::string target = requestStr.substr(pos1 + 1, pos2 - pos1 - 1);
-			size_t qpos = target.find('?');
-			if (qpos != std::string::npos) {
-				req.path = target.substr(0, qpos);
-				std::string qs = target.substr(qpos + 1);
-				std::stringstream qss(qs);
-				std::string pair;
-				while (std::getline(qss, pair, '&')) {
-					if (pair.empty()) continue;
-					size_t eq = pair.find('=');
-					if (eq != std::string::npos) {
-						std::string key = urlDecode(pair.substr(0, eq));
-						std::string val = urlDecode(pair.substr(eq + 1));
-						req.params[key] = val;
-					} else {
-						req.params[urlDecode(pair)] = "";
-					}
-				}
-			} else {
-				req.path = target;
-			}
-			Logger::info(std::string("解析出的 path: ") + req.path);
-		} else {
-			req.path = "";
+		HttpRequestParser::parse(requestStr, req);
+
+		Logger::info(u8"Request: " + req.method + u8" " + req.path);
+
+		if (req.path.find(u8"/images/") == 0 || req.path.find(u8"/img/") == 0) {
+			ImageHandler::handleImageRequest(clientSocket, req);
+			closesocket(clientSocket);
+			continue;
 		}
+
+		std::string res;
+		
 		std::string html = Router::route(req);
-		std::string res=HttpResponse::response(html);
-		send(clientSocket, res.c_str(), static_cast<int>(res.size()), 0);
+		
+		if (req.path.find(".css") != std::string::npos) {
+			res = HttpResponse::response(html, "text/css; charset=utf-8");
+		} else {
+			res = HttpResponse::response(html);
+		}
+		
+		int bytesSent = send(clientSocket, res.c_str(), static_cast<int>(res.size()), 0);
+		if (bytesSent == SOCKET_ERROR) {
+			Logger::error("send failed");
+		}
 
 		closesocket(clientSocket);
 	}

@@ -1,0 +1,59 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
+    background: url('/images/五周年.jpg') center/cover no-repeat fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 60px 80px;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+
+
+
+h1 {
+    font-size: 42px;
+    font-weight: bold;
+    color: #1b8e87;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+
+.welcome-text {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+
+.btn-link {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #60c8c0;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+

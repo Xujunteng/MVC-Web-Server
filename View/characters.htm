@@ -2,14 +2,48 @@
 <HEAD>
 <META charset="UTF-8" NAME="GENERATOR" Content="Microsoft Visual Studio">
 <TITLE>角色图鉴</TITLE>
+<link rel="icon" href="/images/派蒙.jpg" type="image/jpeg">
+<link rel="stylesheet" href="/View/css/characters.css">
 </HEAD>
 <BODY>
 
     <h1>角色信息</h1>
   
-    <div>{{characters}}</div>
+    <div class="characters-container">
+        <div class="filter-container">
+            <form method="GET" action="/characters">
+                <label for="element">元素：</label>
+                <select id="element" name="element" onchange="this.form.submit()">
+                    <option value="">全部</option>
+                    {{elementOptions}}
+                </select>
 
-    <a href="/index">返回首页</a>
+                <label for="from">地区：</label>
+                <select id="from" name="from" onchange="this.form.submit()">
+                    <option value="">全部</option>
+                    {{fromOptions}}
+                </select>
+
+                <label for="weapon">武器：</label>
+                <select id="weapon" name="weapon" onchange="this.form.submit()">
+                    <option value="">全部</option>
+                    {{weaponOptions}}
+                </select>
+
+                <label for="stars">星级：</label>
+                <select id="stars" name="stars" onchange="this.form.submit()">
+                    <option value="">全部</option>
+                    {{starsOptions}}
+                </select>
+            </form>
+        </div>
+
+        <div class="table-container">
+            {{characters}}
+        </div>
+
+        <a href="/index">返回首页</a>
+    </div>
 
 </BODY>
 </HTML>

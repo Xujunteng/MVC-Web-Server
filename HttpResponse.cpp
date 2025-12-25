@@ -9,3 +9,24 @@ std::string HttpResponse::response(std::string& html) {
 		res += html;
 		return res;
 	}
+
+std::string HttpResponse::response(std::string& content, const std::string& contentType) {
+		std::string res = "HTTP/1.1 200 OK\r\n";
+		res += "Content-Type: " + contentType + "\r\n";
+		res += "Content-Length:" + std::to_string(content.size()) + "\r\n";
+		res += "Connection:close\r\n";
+		res += "\r\n";
+		res += content;
+		return res;
+	}
+
+std::string HttpResponse::responseBinary(const std::vector<char>& content, const std::string& contentType) {
+		std::string header = "HTTP/1.1 200 OK\r\n";
+		header += "Content-Type: " + contentType + "\r\n";
+		header += "Content-Length:" + std::to_string(content.size()) + "\r\n";
+		header += "Connection:close\r\n";
+		header += "\r\n";
+		std::string res = header;
+		res.append(content.begin(), content.end());
+		return res;
+	}

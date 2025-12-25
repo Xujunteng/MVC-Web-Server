@@ -1,0 +1,122 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
+    background: #60c8c0;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.detail-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    background: #60c8c0;
+    padding: 30px;
+    color: white;
+}
+
+.header h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.content {
+    padding: 40px;
+}
+
+
+.detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-list li {
+    background: #e6f7f4;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-left: 4px solid #60c8c0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-list li .label {
+    font-weight: bold;
+    color: #60c8c0;
+    min-width: 80px;
+}
+
+.info-list li .value {
+    color: #333;
+    flex: 1;
+}
+
+
+.image-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.character-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.character-image:hover {
+    transform: scale(1.05);
+}
+
+.back-section {
+    text-align: center;
+    padding: 20px 40px 40px;
+    background: #f9fafb;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #60c8c0;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn-back:hover {
+    background: #4db3a8;
+}

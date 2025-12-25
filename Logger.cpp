@@ -50,12 +50,3 @@ void Logger::init(const std::string& filePath) {
 
 void Logger::info(const std::string& msg) { write_line("INFO", msg); }
 void Logger::error(const std::string& msg) { write_line("ERROR", msg); }
-
-void Logger::close() {
-    std::lock_guard<std::mutex> lock(g_mutex);
-    if (g_log.is_open()) {
-        g_log.flush();
-        g_log.close();
-    }
-    g_initialized = false;
-}
