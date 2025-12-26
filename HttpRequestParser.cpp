@@ -39,7 +39,7 @@ void HttpRequestParser::parse(const std::string& rawRequest, HttpRequest& req) {
 	req.params.clear();
 
 	if (rawRequest.empty()) {
-		return;  // 请求为空，不处理
+		return;  
 	}
 
 	size_t posMethodEnd = rawRequest.find(' ');

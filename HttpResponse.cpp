@@ -30,3 +30,13 @@ std::string HttpResponse::responseBinary(const std::vector<char>& content, const
 		res.append(content.begin(), content.end());
 		return res;
 	}
+
+std::string HttpResponse::response404(const std::string& html) {
+		std::string res = "HTTP/1.1 404 NOT FOUND\r\n";
+		res += "Content-Type: text/html; charset=utf-8\r\n";
+		res += "Content-Length:" + std::to_string(html.size()) + "\r\n";
+		res += "Connection:close\r\n";
+		res += "\r\n";
+		res += html;
+		return res;
+	}

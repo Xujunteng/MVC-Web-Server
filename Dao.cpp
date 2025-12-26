@@ -24,11 +24,11 @@ std::vector<Character>Dao::findAll() {
 	std::vector<Character>result;
 	std::ifstream infile("Dao/characters.csv");
 	if (!infile.is_open()) {
-		return result;  // 返回空列表，文件打开失败
+		return result;  
 	}
 	std::string line;
 	if (!getline(infile, line)) {
-		return result;  // 文件为空
+		return result;  
 	}
 	while (getline(infile, line)) {
 		if (line.empty()) continue;
