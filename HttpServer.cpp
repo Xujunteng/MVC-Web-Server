@@ -86,6 +86,8 @@ void HttpServer::start(){
 		
 		if (req.path.find(".css") != std::string::npos) {
 			res = HttpResponse::response(html, "text/css; charset=utf-8");
+		} else if (html.find("<h1>404 NOT FOUND</h1>") != std::string::npos) {
+			res = HttpResponse::response404(html);
 		} else {
 			res = HttpResponse::response(html);
 		}
