@@ -1,14 +1,20 @@
-
+/* 角色列表页样式：筛选器、表格和响应式布局 */
 * {
+    /* 重置所有距外距 */
     margin: 0;
     padding: 0;
+    /* 使所有元素的整体布局方案一致 */
     box-sizing: border-box;
 }
 
 body {
+    /* 设置中文字体 */
     font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
+    /* 绿色背景颜色 */
     background: #60c8c0;
+    /* 至少占满整个窗口 */
     min-height: 100vh;
+    /* 上下留出内边距，左右留出边距 */
     padding: 40px 20px;
 }
 
@@ -22,82 +28,94 @@ h1 {
 }
 
 .characters-container {
+    /* 容器最大宽度 */
     max-width: 1200px;
+    /* 水平居中 */
     margin: 0 auto;
+    /* 白色背景 */
     background: white;
+    /* 圆角处理 */
     border-radius: 15px;
+    /* 内部间距 */
     padding: 30px;
+    /* 隐藏溢出内容 */
     overflow: hidden;
 }
 
 .filter-container {
+    /* 下方留出一些间距 */
     margin: 0 0 30px 0;
-    padding: 25px;
-    background: #e6f7f4;
-    border-radius: 10px;
-    border-left: 4px solid #60c8c0;
-}
-
-.filter-container form {
+    /* 使用flexbox布局 */
     display: flex;
+    /* 允许换行 */
     flex-wrap: wrap;
+    /* 项目间距离 */
     gap: 20px;
+    /* 垂直居中 */
     align-items: center;
 }
 
 .filter-container label {
+    /* 标签样式 */
     font-weight: bold;
     color: #333;
     font-size: 15px;
 }
 
 .filter-container select {
+    /* 选择框内部间距 */
     padding: 10px 15px;
     font-size: 14px;
+    /* 选择框边框 */
     border: 2px solid #7dd3c0;
     border-radius: 8px;
     background-color: white;
     color: #333;
+    /* 鼠标样式 */
     cursor: pointer;
-    min-width: 120px;
-}
-
-.table-container {
-    margin-top: 20px;
-    overflow: hidden;
 }
 
 table {
+    /* 表格宽度100% */
     width: 100%;
+    /* 表格边框合并 */
     border-collapse: collapse;
     margin: 20px 0;
 }
 
 table th {
+    /* 表头背景颜色 */
     background: #60c8c0;
+    /* 表头文字颜色 */
     color: white;
     padding: 15px;
     text-align: left;
     font-weight: bold;
+    /* 上方级角处理 */
     border-radius: 8px 8px 0 0;
 }
 
 table th:first-child {
+    /* 左上级角 */
     border-radius: 8px 0 0 0;
 }
 
 table th:last-child {
+    /* 右上级角 */
     border-radius: 0 8px 0 0;
 }
 
 table td {
+    /* 表格单元格内部间距 */
     padding: 12px 15px;
+    /* 表格行分割线 */
     border-bottom: 1px solid #e0e0e0;
     text-align: left;
     color: #333;
 }
 
 table tbody tr:last-child td {
+    /* 最后一行不显示下边框 */
     border-bottom: none;
 }
 

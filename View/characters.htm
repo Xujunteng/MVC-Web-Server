@@ -1,35 +1,46 @@
-﻿<HTML>
+﻿<!-- 角色列表页面，支持多条件筛选 -->
+<HTML>
 <HEAD>
 <META charset="UTF-8" NAME="GENERATOR" Content="Microsoft Visual Studio">
 <TITLE>角色图鉴</TITLE>
+<!-- 页面图标 -->
 <link rel="icon" href="/images/派蒙.jpg" type="image/jpeg">
+<!-- 引入角色列表页样式 -->
 <link rel="stylesheet" href="/View/css/characters.css">
 </HEAD>
 <BODY>
 
+    <!-- 页面标题 -->
     <h1>角色信息</h1>
   
+    <!-- 主容器 -->
     <div class="characters-container">
+        <!-- 筛选器容器 -->
         <div class="filter-container">
+            <!-- 筛选表单 -->
             <form method="GET" action="/characters">
+                <!-- 元素筛选 -->
                 <label for="element">元素：</label>
                 <select id="element" name="element" onchange="this.form.submit()">
                     <option value="">全部</option>
                     {{elementOptions}}
                 </select>
 
+                <!-- 地区筛选 -->
                 <label for="from">地区：</label>
                 <select id="from" name="from" onchange="this.form.submit()">
                     <option value="">全部</option>
                     {{fromOptions}}
                 </select>
 
+                <!-- 武器筛选 -->
                 <label for="weapon">武器：</label>
                 <select id="weapon" name="weapon" onchange="this.form.submit()">
                     <option value="">全部</option>
                     {{weaponOptions}}
                 </select>
 
+                <!-- 星级筛选 -->
                 <label for="stars">星级：</label>
                 <select id="stars" name="stars" onchange="this.form.submit()">
                     <option value="">全部</option>
@@ -38,10 +49,12 @@
             </form>
         </div>
 
+        <!-- 角色表格容器，由后端动态生成 -->
         <div class="table-container">
             {{characters}}
         </div>
 
+        <!-- 返回首页链接 -->
         <a href="/index">返回首页</a>
     </div>
 

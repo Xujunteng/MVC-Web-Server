@@ -1,5 +1,7 @@
-﻿#include"HttpResponse.h"
+﻿// HTTP响应构建实现
+#include"HttpResponse.h"
 
+// 生成标准HTML 200响应
 std::string HttpResponse::response(std::string& html) {
 		std::string res = "HTTP/1.1 200 OK\r\n";
 		res += "Content-Type: text/html; charset=utf-8\r\n";
@@ -10,6 +12,7 @@ std::string HttpResponse::response(std::string& html) {
 		return res;
 	}
 
+// 生成自定义Content-Type的200响应
 std::string HttpResponse::response(std::string& content, const std::string& contentType) {
 		std::string res = "HTTP/1.1 200 OK\r\n";
 		res += "Content-Type: " + contentType + "\r\n";
@@ -20,7 +23,9 @@ std::string HttpResponse::response(std::string& content, const std::string& cont
 		return res;
 	}
 
-std::string HttpResponse::responseBinary(const std::vector<char>& content, const std::string& contentType) {
+// 生成二进制内容响应，用于图片等资源
+std::string HttpResponse::responseBinary(
+		const std::vector<char>& content, const std::string& contentType) {
 		std::string header = "HTTP/1.1 200 OK\r\n";
 		header += "Content-Type: " + contentType + "\r\n";
 		header += "Content-Length:" + std::to_string(content.size()) + "\r\n";
@@ -31,6 +36,7 @@ std::string HttpResponse::responseBinary(const std::vector<char>& content, const
 		return res;
 	}
 
+// 生成404错误响应
 std::string HttpResponse::response404(const std::string& html) {
 		std::string res = "HTTP/1.1 404 NOT FOUND\r\n";
 		res += "Content-Type: text/html; charset=utf-8\r\n";

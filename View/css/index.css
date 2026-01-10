@@ -1,59 +1,88 @@
-
+/* 首页样式：设置页面布局、容器样式和按钮效果 */
 * {
+    /* 重置所有距外距 */
     margin: 0;
     padding: 0;
+    /* 使所有元素的整体布局方案一致 */
     box-sizing: border-box;
 }
 
 body {
+    /* 设置中文字体 */
     font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
+    /* 背景图片，固定位置不随滚动移动 */
     background: url('/images/五周年.jpg') center/cover no-repeat fixed;
+    /* 至少占满整个窗口 */
     min-height: 100vh;
+    /* 使用flexbox布局并居中内容 */
     display: flex;
+    /* 水平方向居中 */
     justify-content: center;
+    /* 垂直方向居中 */
     align-items: center;
+    /* 外部间距 */
     padding: 20px;
 }
 
-
+/* 主容器 */
 .container {
+    /* 白色背景 */
     background: white;
+    /* 圆角处理 */
     border-radius: 20px;
+    /* 内推距离 */
     padding: 60px 80px;
+    /* 内容居中 */
     text-align: center;
+    /* 最大宽度 */
     max-width: 600px;
+    /* 相对宽度 */
     width: 100%;
 }
 
-
-
-
+/* 页面标题 */
 h1 {
+    /* 标题大小 */
     font-size: 42px;
+    /* 粗体 */
     font-weight: bold;
+    /* 绿色颜色 */
     color: #1b8e87;
+    /* 下方距离 */
     margin-bottom: 20px;
+    /* 字间距 */
     letter-spacing: 2px;
 }
 
-
+/* 欢迎文本 */
 .welcome-text {
+    /* 文本大小 */
     font-size: 18px;
+    /* 灰色文本 */
     color: #666;
+    /* 下方距离 */
     margin-bottom: 40px;
+    /* 行间距 */
     line-height: 1.6;
 }
 
-
+/* 进入图鉴按钮 */
 .btn-link {
+    /* 块级元素 */
     display: inline-block;
+    /* 按钮内推 */
     padding: 15px 40px;
+    /* 绿色背景 */
     background: #60c8c0;
+    /* 白色文本 */
     color: white;
+    /* 无下划线 */
     text-decoration: none;
+    /* 圆角按钮 */
     border-radius: 50px;
     font-size: 18px;
     font-weight: bold;
+    /* 平滑过渡动画 */
     transition: all 0.3s ease;
 }
 

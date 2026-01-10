@@ -1,117 +1,167 @@
-
+/* 角色详情页样式：网格布局、信息卡片和图片展示 */
 * {
+    /* 重置所有距外距 */
     margin: 0;
     padding: 0;
+    /* 使所有元素的整体布局方案一致 */
     box-sizing: border-box;
 }
 
 body {
+    /* 设置中文字体 */
     font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
+    /* 绿色背景颜色 */
     background: #60c8c0;
+    /* 至少占满整个窗口 */
     min-height: 100vh;
+    /* 上下留出内边距，左右留出边距 */
     padding: 40px 20px;
 }
 
 .detail-container {
+    /* 容器最大宽度 */
     max-width: 1000px;
+    /* 水平居中 */
     margin: 0 auto;
+    /* 白色背景 */
     background: white;
+    /* 圆角处理 */
     border-radius: 15px;
+    /* 隐藏溢出内容 */
     overflow: hidden;
+    /* 添加投影效果 */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .header {
+    /* 绿色背景头部 */
     background: #60c8c0;
+    /* 头部内部间距 */
     padding: 30px;
+    /* 白色文本 */
     color: white;
 }
 
 .header h2 {
+    /* 角色名称标题 */
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .content {
+    /* 内容区域内部间距 */
     padding: 40px;
 }
 
-
+/* 网格布局：左侧信息、右侧图片 */
 .detail-layout {
+    /* 使用CSS网格 */
     display: grid;
+    /* 两列等宽布局 */
     grid-template-columns: 1fr 1fr;
+    /* 列间距 */
     gap: 40px;
+    /* 垂直居中对齐 */
     align-items: center;
 }
 
-
+/* 信息区域 */
 .info-section {
+    /* flexbox布局 */
     display: flex;
+    /* 竖向排列 */
     flex-direction: column;
+    /* 居中对齐 */
     justify-content: center;
 }
 
 .info-list {
+    /* 去掉列表标记 */
     list-style: none;
+    /* flexbox布局 */
     display: flex;
+    /* 竖向排列 */
     flex-direction: column;
+    /* 项目间距 */
     gap: 15px;
 }
 
 .info-list li {
+    /* 浅青色背景卡片 */
     background: #e6f7f4;
+    /* 卡片内推 */
     padding: 15px 20px;
+    /* 圆角处理 */
     border-radius: 10px;
+    /* 左侧纵条强调 */
     border-left: 4px solid #60c8c0;
+    /* flexbox排列标签和值 */
     display: flex;
+    /* 垂直居中 */
     align-items: center;
+    /* 元素间距 */
     gap: 15px;
 }
 
 .info-list li .label {
+    /* 标签样式 */
     font-weight: bold;
     color: #60c8c0;
+    /* 最小宽度确保对齐 */
     min-width: 80px;
 }
 
 .info-list li .value {
+    /* 值样式 */
     color: #333;
+    /* 灵活占满剩余空间 */
     flex: 1;
 }
 
-
+/* 图片展示区域 */
 .image-section {
+    /* flexbox居中 */
     display: flex;
+    /* 水平居中 */
     justify-content: center;
+    /* 垂直居中 */
     align-items: center;
 }
 
 .character-image {
+    /* 最大宽度为容器宽度 */
     max-width: 100%;
+    /* 自动高度保持比例 */
     height: auto;
+    /* 圆角处理 */
     border-radius: 15px;
+    /* 图片投影效果 */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .back-section {
+    /* 居中对齐 */
     text-align: center;
+    /* 按钮区域内推 */
     padding: 20px 40px 40px;
+    /* 浅灰背景 */
     background: #f9fafb;
 }
 
 .btn-back {
+    /* 按钮样式 */
     display: inline-block;
+    /* 按钮内推 */
     padding: 12px 30px;
+    /* 按钮背景颜色 */
     background: #60c8c0;
     color: white;
     text-decoration: none;
+    /* 按钮圆角 */
     border-radius: 25px;
     font-size: 16px;
     font-weight: bold;
+    /* 鼠标悬停过渡 */
     transition: background 0.3s ease;
-}
-
-.btn-back:hover {
-    background: #4db3a8;
 }

@@ -1,17 +1,23 @@
-﻿<HTML>
+﻿<!-- 角色详情页面，显示单个角色的完整信息 -->
+<HTML>
 <HEAD>
 <META charset="UTF-8" NAME="GENERATOR" Content="Microsoft Visual Studio">
 <TITLE>角色详情 - 原神观测枢</TITLE>
+<!-- 页面图标 -->
 <link rel="icon" href="/images/派蒙.jpg" type="image/jpeg">
+<!-- 引入角色详情页样式 -->
 <link rel="stylesheet" href="/View/css/characterdetails.css">
 </HEAD>
 <BODY>
 
+<!-- 详情页主容器 -->
 <div class="detail-container">
+    <!-- 详情头部，由后端动态生成角色信息 -->
     <div class="header">
         {{characterDetail}}
     </div>
     
+    <!-- 返回按钮区域 -->
     <div class="back-section">
         <a href="/characters" class="btn-back">返回角色列表</a>
     </div>
