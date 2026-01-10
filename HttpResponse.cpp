@@ -23,7 +23,7 @@ std::string HttpResponse::response(std::string& content, const std::string& cont
 		return res;
 	}
 
-// 生成二进制内容响应，用于图片等资源
+// 生成二进制内容响应，用于图片等资源（目前未被调用，将来实现内容扩展可能会使用到）
 std::string HttpResponse::responseBinary(
 		const std::vector<char>& content, const std::string& contentType) {
 		std::string header = "HTTP/1.1 200 OK\r\n";
